@@ -27,6 +27,7 @@
     "jquery": "^3.2.1",
     "jsdom": "11.2.0",
     "jsdom-global": "3.0.2",
-    "mocha": "^3.5.0"
+    "mocha": "^3.5.0",
+    "mochawesome": "^2.3.0"
   }
 }

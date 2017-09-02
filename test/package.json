@@ -13,6 +13,8 @@
   },
   "devDependencies": {
     "babel-register": "^6.26.0",
-    "mochawesome": "^2.3.0"
+    "mochawesome": "^2.3.0",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0"
   }
 }

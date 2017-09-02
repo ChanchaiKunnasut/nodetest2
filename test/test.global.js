@@ -67,16 +67,25 @@ describe('test database connecting', function(){
 
 
 // Chai assert module ----------------------------------------------------------
-const  chai = require('chai');
+"use strict";
+var  chai = require('chai');
+var sinon = require('sinon');
+var sinonChai = require('sinon-chai'); 
 const  chaitest = require('../public/javascripts/global');
 var expect = chai.expect;
 var assert = chai.assert;
+chai.use(sinonChai);
 
 describe('Chai test', function(){
   it('expect test',function(){
     var foo = "test";
     expect(foo).to.be.a('string');
     expect(foo).to.be.equal('test');
+    expect(chaitest.populateTable().x).to.be.equal("a");
   })
 })
 //expect(foo).to.be.a('string');
+// Using Chai's expect : 
+function hello(name, cb){
+  cb("hello " + name);
+}

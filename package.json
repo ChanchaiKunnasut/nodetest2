@@ -12,6 +12,7 @@
   "dependencies": {
     "babel-register": "^6.26.0",
     "body-parser": "~1.17.1",
+    "chai": "^4.1.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "^2.5.7",

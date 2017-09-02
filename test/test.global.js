@@ -41,16 +41,18 @@ describe('tests', function(){
             assert.equal(myCode.testFunction(),1,"error"); //assert module
         })
     })
-}); 
+});
 
 */
+
 // /Node assert --------------------------------------------------------------
 
+/*
 // node supertest 
 const request = require('supertest');
 const server = require('../app');
 
-describe('test get input', function(){
+describe('test database connecting', function(){
         it('should response ok when call add',function(done){
             request(server)
                 .get('/users/userlist')
@@ -58,3 +60,23 @@ describe('test get input', function(){
                 //.expect("fizz", done);
         });
 });
+
+
+// /node supertest -------------------------------------------------------------
+*/
+
+
+// Chai assert module ----------------------------------------------------------
+const  chai = require('chai');
+const  chaitest = require('../public/javascripts/global');
+var expect = chai.expect;
+var assert = chai.assert;
+
+describe('Chai test', function(){
+  it('expect test',function(){
+    var foo = "test";
+    expect(foo).to.be.a('string');
+    expect(foo).to.be.equal('test');
+  })
+})
+//expect(foo).to.be.a('string');

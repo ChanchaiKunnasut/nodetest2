@@ -1,6 +1,6 @@
 // Userlist data array for filling in info box
 var userListData = [];
-
+/*
 // Dom Ready ================================================================
 $(document).ready(function(){
     
@@ -8,7 +8,7 @@ $(document).ready(function(){
     populateTable();
 
 });
-
+*/
 
 
 // Functions ================================================================
@@ -184,4 +184,5 @@ $(document).keypress(function (e) {
 if(typeof exports !== 'undefined') {
     exports.populateTable = populateTable;
     exports.showUserInfo = showUserInfo;
+    exports.addUser = addUser;
 };

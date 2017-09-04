@@ -71,21 +71,95 @@ describe('test database connecting', function(){
 var  chai = require('chai');
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai'); 
+var jq = require('jquery');
+var jsdom = require('jsdom').jsdom;
 const  chaitest = require('../public/javascripts/global');
 var expect = chai.expect;
 var assert = chai.assert;
 chai.use(sinonChai);
 
-describe('Chai test', function(){
+/*describe('Sinon-Chai test "SPY"', function(){
   it('expect test',function(){
-    var foo = "test";
-    expect(foo).to.be.a('string');
-    expect(foo).to.be.equal('test');
-    expect(chaitest.populateTable().x).to.be.equal("a");
+    var c =
+    
   })
-})
+})*/
 //expect(foo).to.be.a('string');
-// Using Chai's expect : 
+// Sinon =======================================================================
 function hello(name, cb){
+  var x = "test";
   cb("hello " + name);
 }
+
+function testMe(callback){
+  callback();
+}
+
+const user ={
+  // ..
+  setName: function(name){
+    this.name = name;
+  }
+}
+describe("hello", function (){
+  it("should call callback with correct greeting", function(){
+    var cb = sinon.spy();
+    var x = sinon.spy();
+
+    hello("foo",cb);
+    
+    expect(cb).to.have.been.calledWith("hello foo");
+    
+
+  });
+});
+
+describe("testMe function", function (){
+  it("should call the callback", function(){
+   let callbackSpy = sinon.spy()
+   testMe(callbackSpy)
+   expect(callbackSpy).to.have.been.calledOnce
+  });
+});
+
+describe("setName function", function (){
+  it("should call with name", function(){
+   let setNameSpy = sinon.spy(user, 'setName')
+
+   user.setName('Harry Potter')
+   expect(setNameSpy).to.have.been.calledOnce
+   expect(setNameSpy).to.have.been.calledWith('Harry Potter')
+
+   // Important! Remove the spy at end to prevent future errors
+   setNameSpy.restore()
+  });
+});
+// Sinon ===================================================================
+
+// Stubs-Example for Ajax call #1===========================================
+function saveUser(user, callback){
+  jq.post('/users/userlist', {
+    first: user.firstname,
+    last: user.lastname
+  },callback)
+}
+describe("saveUser", function (){
+  it("should call callback after saving", function(){
+   let post = sinon.stub(jq,'post') // prevent sending the post request
+   post.yields() // make the stub call the 1st callback it receives
+   let callbackSpy = sinon.spy() // use a spy as the callback
+   let testUser = { firstname: 'Severus', lastname: 'Snape'}
+
+   saveUser(testUser, callbackSpy)
+
+   expect(callbackSpy).to.have.been.calledOnce
+
+   post.restore()
+
+  });
+});
+
+// Stubs-Example for Ajax call #1===========================================
+
+
+

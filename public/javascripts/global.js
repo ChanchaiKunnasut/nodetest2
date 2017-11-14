@@ -14,10 +14,9 @@ $(document).ready(function(){
 // Functions ================================================================
 
 // Fill table with data
+
 function populateTable(){
 
-
-    var x = "a";
     // Empty content string
     var tableContent = '';
     //console.log(tableContent);
